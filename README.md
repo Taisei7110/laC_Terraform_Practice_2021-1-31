@@ -1,0 +1,2 @@
+# laC_Terraform_Practice_2021-1-31
+Terraformを使ってインフラのコード化してみた（初めてだからmodule未使用）
