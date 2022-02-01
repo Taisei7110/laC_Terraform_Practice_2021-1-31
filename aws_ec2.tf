@@ -1,5 +1,5 @@
 resource "aws_instance" "tf-my-instance-a" {
-  ami = "ami-02892a4ea9bfa2192"
+  ami = "ami-0cf88a58f2bdcdc72"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2-sg.id]
   subnet_id = aws_subnet.public-subnet-1a.id
@@ -22,7 +22,7 @@ resource "aws_instance" "tf-my-instance-a" {
 }
 
 resource "aws_instance" "tf-my-instance-c" {
-  ami = "ami-0c3fd0f5d33134a76"
+  ami = "ami-0cf88a58f2bdcdc72"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2-sg.id]
   subnet_id = aws_subnet.public-subnet-1c.id
