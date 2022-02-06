@@ -24,7 +24,7 @@ resource "aws_subnet" "private-subnet-1a" {
   vpc_id                  = aws_vpc.my-vpc.id
   cidr_block              = "192.168.2.0/24"
   availability_zone       = "ap-northeast-1a"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
 
   tags = {
     Name = "private-subnet-1a-terraform"
@@ -35,7 +35,7 @@ resource "aws_subnet" "private-subnet-1c" {
   vpc_id                  = aws_vpc.my-vpc.id
   cidr_block              = "192.168.3.0/24"
   availability_zone       = "ap-northeast-1c"
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
 
   tags = {
     Name = "private-subnet-1c-terraform"
