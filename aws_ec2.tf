@@ -13,7 +13,7 @@ resource "aws_instance" "tf-my-instance-a" {
   ebs_block_device {
     device_name = "/dev/sdf"
     volume_type = "gp2"
-    volume_size = "100"
+    volume_size = "10"
   }
 
   tags = {
@@ -36,7 +36,7 @@ resource "aws_instance" "tf-my-instance-c" {
   ebs_block_device {
     device_name = "/dev/sdf"
     volume_type = "gp2"
-    volume_size = "100"
+    volume_size = "10"
   }
 
   tags = {
