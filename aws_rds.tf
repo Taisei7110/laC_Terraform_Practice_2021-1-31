@@ -1,3 +1,7 @@
+#--------------------------------#
+#DBインスタンスの定義(MySQL)
+#--------------------------------#
+
 resource "aws_db_instance" "tf-my-db" {
   engine                  = "MySQL"
   engine_version          = "5.7.30"
@@ -16,4 +20,13 @@ resource "aws_db_instance" "tf-my-db" {
   parameter_group_name    = aws_db_parameter_group.db-pg.name
   db_subnet_group_name    = aws_db_subnet_group.db-sg.name
   availability_zone       = "ap-northeast-1a"
+}
+
+#--------------------------------#
+#サブネットグループの作成
+#--------------------------------#
+
+resource "aws_db_subnet_group" "db-sg" {
+  name       = "db-sg"
+  subnet_ids = [aws_subnet.private-subnet-1a.id, aws_subnet.private-subnet-1c.id]
 }

@@ -1,3 +1,7 @@
+#--------------------------------------------#
+#Instance 1aの定義
+#--------------------------------------------#
+
 resource "aws_instance" "tf-my-instance-a" {
   ami                    = "ami-03d79d440297083e3"
   instance_type          = "t2.micro"
@@ -10,17 +14,20 @@ resource "aws_instance" "tf-my-instance-a" {
     volume_size = "20"
   }
 
-  ebs_block_device {
+  /* ebs_block_device {
     device_name = "/dev/sdf"
     volume_type = "gp2"
     volume_size = "10"
-  }
+  }  */
+ 
 
   tags = {
     Name = "tf-my-instance-a"
   }
 }
-
+#--------------------------------------------#
+#Instance 1cの定義
+#--------------------------------------------#
 resource "aws_instance" "tf-my-instance-c" {
   ami                    = "ami-03d79d440297083e3"
   instance_type          = "t2.micro"
@@ -33,11 +40,11 @@ resource "aws_instance" "tf-my-instance-c" {
     volume_size = "20"
   }
 
-  ebs_block_device {
+  /* ebs_block_device {
     device_name = "/dev/sdf"
     volume_type = "gp2"
     volume_size = "10"
-  }
+  } */
 
   tags = {
     Name = "tf-my-instance-c"

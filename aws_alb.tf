@@ -1,3 +1,7 @@
+#--------------------------------------------#
+#ALBの定義
+#--------------------------------------------#
+
 resource "aws_lb" "tf-my-alb" {
   name                       = "test-alb-tf"
   internal                   = false
@@ -6,15 +10,18 @@ resource "aws_lb" "tf-my-alb" {
   security_groups            = [aws_security_group.tf-alb-sg.id]
 
   subnets = [
-    aws_subnet.public-subnet-1a.id,
-    aws_subnet.public-subnet-1c.id
+    aws_subnet.primary-subnet.id,
+    aws_subnet.secondary-subnet.id
   ]
 
   tags = {
-    Name = "alb-terraform"
+    Name = "test-alb-tf"
   }
 }
-//セキュリティグループの定義
+
+#--------------------------------------------#
+#セキュリティグループの定義
+#--------------------------------------------#
 
 resource "aws_security_group" "tf-alb-sg" {
   name   = "alb"
@@ -37,7 +44,9 @@ resource "aws_security_group" "tf-alb-sg" {
   }
 }
 
-//ターゲットグループの定義
+#--------------------------------------------#
+#ターゲットグループの定義
+#--------------------------------------------#
 
 resource "aws_lb_target_group" "tf-alb-tg" {
   name     = "alb-tg"
@@ -57,7 +66,10 @@ resource "aws_lb_target_group" "tf-alb-tg" {
   }
 }
 
-//ターゲットグループのアタッチ
+#--------------------------------------------#
+#ターゲットグループのアタッチ
+#--------------------------------------------#
+
 resource "aws_alb_target_group_attachment" "tf-alb-tg-attach-a" {
   target_group_arn = aws_lb_target_group.tf-alb-tg.arn
   target_id        = aws_instance.tf-my-instance-a.id
@@ -70,7 +82,10 @@ resource "aws_alb_target_group_attachment" "tf-alb-tg-attach-c" {
   port             = 80
 }
 
-//ALBのリスナーの定義
+#--------------------------------------------#
+#ALBのリスナーの定義
+#--------------------------------------------#
+
 resource "aws_alb_listener" "tf-alb-listener" {
   load_balancer_arn = aws_lb.tf-my-alb.arn
   port              = "80"
@@ -82,7 +97,10 @@ resource "aws_alb_listener" "tf-alb-listener" {
   }
 }
 
-//リスナールールの定義
+#--------------------------------------------#
+#リスナールールの定義
+#--------------------------------------------#
+
 resource "aws_alb_listener_rule" "tf-listener-rule" {
   listener_arn = aws_alb_listener.tf-alb-listener.arn
   priority     = 100
