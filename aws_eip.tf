@@ -12,6 +12,6 @@ resource "aws_eip_association" "eip_association-a" {
 }
 
 resource "aws_eip_association" "eip_association-c" {
-  instance_id = aws_instance.tf-my-instance-c.id
+  instance_id   = aws_instance.tf-my-instance-c.id
   allocation_id = aws_eip.my-eip-c.id
 }
